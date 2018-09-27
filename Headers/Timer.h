@@ -1,6 +1,6 @@
 #ifndef TIMER_CLASS
 #define TIMER_CLASS
-#include <Allegro5/allegro5>
+#include <allegro5/allegro5.h>
 
 class Timer
 {
