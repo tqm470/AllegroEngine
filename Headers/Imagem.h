@@ -19,10 +19,11 @@ public:
     operator ALLEGRO_BITMAP*() const;
     int GetLargura() const;
     ~Imagem();
-private:
-    ALLEGRO_BITMAP* imagem;
+protected:
     int altura;
     int largura;
+private:
+    ALLEGRO_BITMAP* imagem;
 };
 
 
