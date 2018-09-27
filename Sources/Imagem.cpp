@@ -19,8 +19,8 @@ Imagem::Imagem( ALLEGRO_BITMAP* imagem)
         throw Bug("Erro ao construir imagem! construtor recebeu ponteiro NULL");
     }
     this->imagem = imagem;
-    altura = al_get_bitmap_height(this->imagem);
-    largura = al_get_bitmap_width(this->imagem);
+    altura = al_get_bitmap_height( *this );
+    largura = al_get_bitmap_width( *this );
 }
 
 Imagem::Imagem( Vec2<int> tam )
@@ -30,6 +30,8 @@ Imagem::Imagem( Vec2<int> tam )
     {
         throw Bug("Erro ao cirar imagem. al_create_bitmap retornou NULL");
     }
+    altura = al_get_bitmap_height( *this );
+    largura = al_get_bitmap_width( *this );
 }
 
 ALLEGRO_BITMAP* Imagem::GetImagem() const

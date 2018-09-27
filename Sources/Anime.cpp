@@ -14,7 +14,7 @@ Anime::Anime(int x, int y, int width, int height, int count, const Imagem& sprit
 void Anime::Desenhar( const Vec2<float>& pos ) const
 {
     al_draw_bitmap_region(sprite, frames[iCurFrame].x, frames[iCurFrame].y,
-                             spriteWidth / 3, spriteHeight / 4, pos.x, pos.y, 0);
+                             sprite.GetLargura() / 3, sprite.GetAltura() / 4, pos.x, pos.y, 0);
 }
 
 void Anime::Atualizar(float dt)

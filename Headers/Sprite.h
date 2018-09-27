@@ -4,15 +4,13 @@
 #include "Imagem.h"
 #include "Cor.h"
 #include <string>
-#define spriteWidth 144
-#define spriteHeight 192
 
 
 
 class Sprite : public Imagem
 {
     public:
-    Sprite( std::string path, int n )
+    Sprite( std::string path, int spriteWidth, int spriteHeight, int n )
         :
         Imagem({ spriteWidth, spriteHeight })
     {
