@@ -27,8 +27,8 @@ class Sprite : public Imagem
         }
         al_set_target_bitmap( *this );
         al_clear_to_color( al_map_rgba(0, 0, 0, 0) );
-        int w = n < 3 ? 0 : 1;
-        al_draw_bitmap_region(*x, spriteWidth * (n % 3), spriteHeight * w, spriteWidth, spriteHeight, 0, 0, 0);
+        int w = n <= 3 ? 0 : 1;
+        al_draw_bitmap_region(*x, spriteWidth * (n % 4), spriteHeight * w, spriteWidth, spriteHeight, 0, 0, 0);
         al_set_target_backbuffer( al_get_current_display() );
         delete x;
     }

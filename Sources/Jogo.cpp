@@ -11,7 +11,7 @@ Jogo::Jogo(Janela& janela)
 {
     try
     {
-        sprite1 = new Sprite("Recursos/Actor1.png", 0);
+        sprite1 = new Sprite("Recursos/Actor1.png", 3);
         sprite2 = new Sprite("Recursos/Actor1.png", 1);
         fonte = new Fonte("Recursos/font/Quicksand.otf", 24);
         mouse = new Mouse();
@@ -43,9 +43,9 @@ void Jogo::Atualizar()
 void Jogo::Desenhar()
 {
     
-
-    main->Desenhar();
     secundario->Desenhar();
+    main->Desenhar();
+    
     
 }
 
