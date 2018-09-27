@@ -1,5 +1,6 @@
 #include "../Headers/Jogo.h"
 #include "../Headers/Sprite.h"
+#include "../Headers/Jogador.h"
 #include <sstream>
 
 
@@ -22,7 +23,7 @@ Jogo::Jogo(Janela& janela)
         e.Print();
         exit(1);
     }
-    main = new Personagem(*sprite1, {200, 200});
+    main = new Jogador(*sprite1, {200, 200}, *mouse, *teclado);
     secundario = new Personagem(*sprite2, {400, 200});
     lastFrameTime = al_get_time();
 }
@@ -35,48 +36,6 @@ void Jogo::Atualizar()
     frameTime = al_get_time() - lastFrameTime;
     lastFrameTime = al_get_time();
 
-    Vec2<float> dir = { 0.0f, 0.0f };
-
-    if( teclado->Tecla( ALLEGRO_KEY_UP ) )
-    {
-        dir = { 0.0f, -1.0f };
-    }
-    else if( teclado->Tecla( ALLEGRO_KEY_DOWN ) )
-    {
-        dir = { 0.0f, 1.0f };
-    }
-    else if( teclado->Tecla( ALLEGRO_KEY_LEFT ) )
-    {
-        dir = { -1.0f, 0.0f };
-    }
-    else if( teclado->Tecla( ALLEGRO_KEY_RIGHT ) )
-    {
-        dir = { 1.0f, 0.0f };
-    }
-
-    main->SetDirection( dir );
-    dir = {0.0f , 0.0f};
-
-    if( teclado->Tecla( ALLEGRO_KEY_W ) )
-    {
-        dir = { 0.0f, -1.0f };
-    }
-    else if( teclado->Tecla( ALLEGRO_KEY_S ) )
-    {
-        dir = { 0.0f, 1.0f };
-    }
-    else if( teclado->Tecla( ALLEGRO_KEY_A ) )
-    {
-        dir = { -1.0f, 0.0f };
-    }
-    else if( teclado->Tecla( ALLEGRO_KEY_D ) )
-    {
-        dir = { 1.0f, 0.0f };
-    }
-
-    secundario->SetDirection( dir );
-
-    
     main->Atualizar( frameTime );
     secundario->Atualizar( frameTime );
 }

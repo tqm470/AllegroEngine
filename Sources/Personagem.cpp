@@ -1,6 +1,6 @@
 #include "../Headers/Personagem.h"
 
-Personagem::Personagem( Imagem& sprite, Vec2<float> pos )
+Personagem::Personagem( const Imagem& sprite, Vec2<float> pos )
     :
     sprite(sprite),
     pos(pos)

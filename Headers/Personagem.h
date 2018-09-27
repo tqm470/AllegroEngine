@@ -7,9 +7,9 @@
 class Personagem
 {
 public:
-    Personagem(Imagem& sprite, Vec2<float> pos);
+    Personagem(const Imagem& sprite, Vec2<float> pos);
     ~Personagem();
-    void Atualizar( float dt );
+    virtual void Atualizar( float dt );
     void SetDirection( const Vec2<float>& dir);
     void Desenhar() const;
 private:
@@ -27,7 +27,7 @@ private:
         Contador
     };
 protected:
-    Imagem& sprite;
+    const Imagem& sprite;
     Vec2<float> pos;
     Vec2<float> dir;
     float velocidade = 1.0f;
