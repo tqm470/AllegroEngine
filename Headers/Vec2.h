@@ -1,5 +1,6 @@
 #ifndef VEC2_CLASS
 #define VEC2_CLASS
+#include <cmath>
 
 template<typename T>
 class Vec2
@@ -26,22 +27,32 @@ public:
         x = rhs.x;
         y = rhs.y;
     }
-    Vec2<T> operator* ( Vec2<T> rhs ) const
+    Vec2<T> Normalizado() const
+    {
+        return *this / sqrt( (x * x) + (y * y) );
+    }
+
+    Vec2<T> operator/ ( const T& rhs ) const
+    {
+        return {this->x / rhs, this->y / rhs};
+    }
+    Vec2<T> operator* ( const Vec2<T>& rhs ) const
     {
         return {this->x * rhs.x, this->y * rhs.y};
     }
-    Vec2<T> operator* ( T rhs ) const
+    Vec2<T> operator* ( const T& rhs ) const
     {
         return {this->x * rhs, this->y * rhs};
     }
-    Vec2<T> operator+ ( Vec2<T> rhs ) const
+    Vec2<T> operator+ ( const Vec2<T>& rhs ) const
     {
         return {this->x + rhs.x, this->y + rhs.y};
     }
-    Vec2<T> operator- ( Vec2<T> rhs ) const
+    Vec2<T> operator- ( const Vec2<T>& rhs ) const
     {
         return {this->x - rhs.x, this->y - rhs.y};
     }
+
     T x;
     T y;
 };

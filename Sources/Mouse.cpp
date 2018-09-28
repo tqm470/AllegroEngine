@@ -14,12 +14,12 @@ void Mouse::Atualizar()
     al_get_mouse_state(&estado);
 }
 
-Vec2<int> Mouse::GetPosition()
+Vec2<float> Mouse::GetPosition() const
 {
-    return {estado.x, estado.y};
+    return {(float)estado.x, (float)estado.y};
 }
 
-bool Mouse::Botao( int botao )
+bool Mouse::Botao( int botao ) const
 {
     if(estado.buttons & botao)
         return true;

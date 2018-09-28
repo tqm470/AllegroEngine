@@ -67,6 +67,11 @@ void Personagem::SetDirection( const Vec2<float>& direction )
     dir = direction * velocidade;
 }
 
+Vec2<float> Personagem::GetPos() const
+{
+    return pos;
+}
+
 Personagem::~Personagem()
 {
 }

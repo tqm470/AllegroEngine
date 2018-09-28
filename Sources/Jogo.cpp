@@ -44,7 +44,18 @@ void Jogo::Atualizar()
     foguinho->Atualizar( frameTime );
 
     main->Atualizar( frameTime );
+
+    if( mouse->Botao( 1 ))
+    {
+        Vec2<float> mousePos = mouse->GetPosition();
+        secundario->SetDirection( Vec2<float>( mousePos - secundario->GetPos() ).Normalizado() );
+    }
+    else
+    {
+        secundario->SetDirection( {0.0f, 0.0f} );
+    }
     secundario->Atualizar( frameTime );
+    
 }
 
 void Jogo::Desenhar()
@@ -65,4 +76,5 @@ Jogo::~Jogo()
     delete mouse;
     delete teclado;
     delete main;
+    delete fogo;
 }

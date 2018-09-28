@@ -12,6 +12,7 @@ public:
     virtual void Atualizar( float dt );
     void SetDirection( const Vec2<float>& dir);
     void Desenhar() const;
+    Vec2<float> GetPos() const;
 private:
     enum class Sequencia
     {

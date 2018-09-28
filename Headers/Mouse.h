@@ -9,8 +9,8 @@ class Mouse
 public:
     Mouse();
     void Atualizar();
-    Vec2<int> GetPosition();
-    bool Botao(int botao);
+    Vec2<float> GetPosition() const;
+    bool Botao(int botao) const;
     ~Mouse();
 private:
     ALLEGRO_MOUSE_STATE estado;
