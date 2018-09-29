@@ -18,6 +18,7 @@ public:
 private:
     float lastFrameTime = 0.0f;
     float frameTime = 0.0f;
+    float timer = 0.0f;
 
     Janela& janela;
     Imagem* sprite1;

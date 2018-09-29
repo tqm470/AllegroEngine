@@ -10,7 +10,7 @@
 class Sprite : public Imagem
 {
     public:
-    Sprite( std::string path, int spriteWidth, int spriteHeight, int n )
+    Sprite( const std::string path, const int spriteWidth, const int spriteHeight, const int n )
         :
         Imagem({ spriteWidth, spriteHeight })
     {

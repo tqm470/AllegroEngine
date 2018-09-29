@@ -2,6 +2,7 @@
 #include "../Headers/Sprite.h"
 #include "../Headers/Jogador.h"
 #include <sstream>
+#include <cmath>
 
 
 Jogo::Jogo(Janela& janela)
@@ -41,6 +42,13 @@ void Jogo::Atualizar()
     frameTime = al_get_time() - lastFrameTime;
     lastFrameTime = al_get_time();
 
+    timer += frameTime;
+    if(timer > 2.0f )
+    {
+        std::cout << frameTime << std::endl;
+        timer = 0.0f;
+    }
+
     foguinho->Atualizar( frameTime );
 
     main->Atualizar( frameTime );
@@ -61,11 +69,14 @@ void Jogo::Atualizar()
 void Jogo::Desenhar()
 {
     
-    foguinho->Desenhar( {200, 400} );
+    
     secundario->Desenhar();
     main->Desenhar();
     
-    
+    Vec2<float> mDir = ( mouse->GetPosition() - Vec2<float>(400.0f, 300.0f) ).Normalizado();
+
+    //fogo->DrawRotated( {400, 300}, mDir );
+    foguinho->DesenharRotacionado( {400, 300}, mDir );
 }
 
 Jogo::~Jogo()

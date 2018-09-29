@@ -11,10 +11,12 @@ public:
     Anime(int x, int y, int width, int height, int count, const Imagem& sprite, float delay);
     void Atualizar(float dt);
     void Desenhar(const Vec2<float>& pos) const;
+    void DesenharRotacionado( const Vec2<float>& pos, const Vec2<float>& dir ) const;
 private:
     void Advance();
 private:
     const Imagem& sprite;
+    const Vec2<int> tam;
     int iCurFrame = 0;
     std::vector<Vec2<int>> frames;
     float delay;

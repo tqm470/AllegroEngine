@@ -10,22 +10,23 @@ class Imagem
 public:
     Imagem( const char* path );
     Imagem( ALLEGRO_BITMAP* imagem );
-    Imagem( Vec2<int> tam );
+    Imagem( const Vec2<int> tam );
     ALLEGRO_BITMAP* GetImagem() const;
     void Draw( Vec2<int> pos ) const;
-    void DrawScaled( Vec2<int> pos, Vec2<int> size ) const;
-    void DrawScaled( Vec2<int> pos, float size) const;
-    int GetAltura() const;
+    void DrawScaled( const Vec2<float> pos, const Vec2<int> size ) const;
+    void DrawScaled( const Vec2<float> pos, const float size ) const;
+    void DrawRotated( const Vec2<float> pos, const double angulo ) const;
+    void DrawRotated( const Vec2<float> pos, const Vec2<float> dir ) const;
+    const int GetAltura() const;
     operator ALLEGRO_BITMAP*() const;
-    int GetLargura() const;
+    const int GetLargura() const;
     ~Imagem();
 protected:
     int altura;
     int largura;
 private:
-    ALLEGRO_BITMAP* imagem;
+    const ALLEGRO_BITMAP* imagem;
 };
-
 
 
 #endif
