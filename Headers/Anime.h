@@ -12,6 +12,8 @@ public:
     void Atualizar(float dt);
     void Desenhar(const Vec2<float>& pos) const;
     void DesenharRotacionado( const Vec2<float>& pos, const Vec2<float>& dir ) const;
+    void DesenharRotacionado( const Vec2<float>& pos, const float& angulo ) const;
+    Anime& operator= ( const Anime& );
 private:
     void Advance();
 private:

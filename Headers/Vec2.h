@@ -22,14 +22,29 @@ public:
         x = rhs.x;
         y = rhs.y;
     }
-    Vec2( Vec2<T> const& rhs )
+    Vec2( const Vec2<T>& rhs )
+    {
+        x = rhs.x;
+        y = rhs.y;
+    }
+    Vec2( const Vec2<T>&& rhs )
+    {
+        x = rhs.x;
+        y = rhs.y;
+    }
+    Vec2<T> operator= ( const Vec2<T>&& rhs )
     {
         x = rhs.x;
         y = rhs.y;
     }
     Vec2<T> Normalizado() const
     {
-        return *this / sqrt( (x * x) + (y * y) );
+        return *this / this->Comprimento();
+    }
+
+    double Comprimento() const
+    {
+        return sqrt( (x * x) + (y * y) );
     }
 
     Vec2<T> operator/ ( const T& rhs ) const

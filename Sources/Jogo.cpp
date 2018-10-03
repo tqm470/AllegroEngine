@@ -26,7 +26,7 @@ Jogo::Jogo(Janela& janela)
         e.Print();
         exit(1);
     }
-    main = new Jogador( *sprite1, {200, 200}, *mouse, *teclado );
+    main = new Jogador( *sprite1, {200, 200}, *mouse, *teclado, *this );
     secundario = new Personagem( *sprite2, {400, 200} );
     lastFrameTime = al_get_time();
 
@@ -64,6 +64,18 @@ void Jogo::Atualizar()
     }
     secundario->Atualizar( frameTime );
     
+
+    for( auto i = projeteis.begin(); i < projeteis.end(); i++ )
+    {
+        if(i->deveDeletar)
+        {
+            projeteis.erase( i );
+        }
+        else
+        {
+            i->Atualizar( frameTime );
+        }
+    }
 }
 
 void Jogo::Desenhar()
@@ -77,6 +89,11 @@ void Jogo::Desenhar()
 
     //fogo->DrawRotated( {400, 300}, mDir );
     foguinho->DesenharRotacionado( {400, 300}, mDir );
+
+    for(auto x : projeteis)
+    {
+        x.Desenhar();
+    }
 }
 
 Jogo::~Jogo()
@@ -88,4 +105,9 @@ Jogo::~Jogo()
     delete teclado;
     delete main;
     delete fogo;
+}
+
+void Jogo::CriarProjetil( const Projetil& projetil )
+{
+    projeteis.push_back( projetil );
 }

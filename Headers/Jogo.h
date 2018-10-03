@@ -6,7 +6,7 @@
 #include "Mouse.h"
 #include "Personagem.h"
 #include "Teclado.h"
-
+#include "Projetil.h"
 
 class Jogo
 {
@@ -15,6 +15,7 @@ public:
     ~Jogo();
     void Atualizar();
     void Desenhar();
+    void CriarProjetil( const Projetil& projetil );
 private:
     float lastFrameTime = 0.0f;
     float frameTime = 0.0f;
@@ -31,6 +32,8 @@ private:
     Mouse* mouse;
     Teclado* teclado;
     Vec2<int> imgPos;
+
+    std::vector<Projetil> projeteis;
 };
 
 #endif
