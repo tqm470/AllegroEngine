@@ -29,7 +29,6 @@ void Projetil::Atualizar( float dt )
 
 void Projetil::Desenhar() const
 {
-    if(!deveDeletar)
         animation.DesenharRotacionado( pos, angulo );
 }
 
@@ -37,7 +36,7 @@ Projetil::Projetil( const Projetil&& rhs )
     :
     animation(rhs.animation),
     pos(rhs.pos),
-    pos0(rhs.pos),
+    pos0(rhs.pos0),
     dir(rhs.dir),
     velocidade(rhs.velocidade),
     alcance(rhs.alcance),
@@ -50,7 +49,7 @@ Projetil::Projetil( const Projetil& rhs )
     :
     animation(rhs.animation),
     pos(rhs.pos),
-    pos0(rhs.pos),
+    pos0(rhs.pos0),
     dir(rhs.dir),
     velocidade(rhs.velocidade),
     alcance(rhs.alcance),
@@ -59,8 +58,8 @@ Projetil::Projetil( const Projetil& rhs )
 
 }
 
-Projetil&& Projetil::operator= ( const Projetil& rhs )
+std::unique_ptr<Projetil> Projetil::operator= ( const Projetil& rhs )
 {
-    Projetil retorno = Projetil( rhs );
+    std::unique_ptr<Projetil> retorno( new Projetil( rhs ) );
     return std::move( retorno );
 }

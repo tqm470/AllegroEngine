@@ -2,6 +2,7 @@
 #define PROJETIL_CLASS
 #include "Vec2.h"
 #include "Anime.h"
+#include <memory>
 
 class Projetil
 {
@@ -11,7 +12,7 @@ public:
     Projetil( const Projetil& rhs );
     virtual void Atualizar( const float frameTime );
     virtual void Desenhar() const;
-    Projetil&& operator= ( const Projetil& rhs );
+    std::unique_ptr<Projetil> operator= ( const Projetil& rhs );
 private:
     Anime animation;
     Vec2<float> pos;

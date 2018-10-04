@@ -67,13 +67,11 @@ void Jogo::Atualizar()
 
     for( auto i = projeteis.begin(); i < projeteis.end(); i++ )
     {
-        if(i->deveDeletar)
+        i->get()->Atualizar( frameTime );
+        if(i->get()->deveDeletar)
         {
-            projeteis.erase( i );
-        }
-        else
-        {
-            i->Atualizar( frameTime );
+            std::cout << "deletou" << std::endl;
+            i = projeteis.erase( i );
         }
     }
 }
@@ -88,11 +86,11 @@ void Jogo::Desenhar()
     Vec2<float> mDir = ( mouse->GetPosition() - Vec2<float>(400.0f, 300.0f) ).Normalizado();
 
     //fogo->DrawRotated( {400, 300}, mDir );
-    foguinho->DesenharRotacionado( {400, 300}, mDir );
+    //foguinho->DesenharRotacionado( {400, 300}, mDir );
 
-    for(auto x : projeteis)
+    for( auto i = projeteis.begin(); i < projeteis.end(); i++ )
     {
-        x.Desenhar();
+        i->get()->Desenhar();
     }
 }
 
@@ -107,7 +105,7 @@ Jogo::~Jogo()
     delete fogo;
 }
 
-void Jogo::CriarProjetil( const Projetil& projetil )
+void Jogo::CriarProjetil( std::unique_ptr<Projetil>&& projetil )
 {
-    projeteis.push_back( projetil );
+    projeteis.push_back( std::move( projetil ) );
 }
