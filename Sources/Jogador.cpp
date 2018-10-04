@@ -45,8 +45,9 @@ void Jogador::LerControles()
     {
         dir = { 1.0f, 0.0f };
     }
+
     if(castCD == 0)
-        if( teclado.Tecla( ALLEGRO_KEY_T ) )
+        if( mouse.Botao( 2 ) )
         {
             Cast( *(scena.foguinho), (mouse.GetPosition() - pos).Normalizado(), 1.5f, 400 );
             castCD += 0.1f;
