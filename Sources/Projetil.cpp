@@ -63,3 +63,8 @@ std::unique_ptr<Projetil> Projetil::operator= ( const Projetil& rhs )
     std::unique_ptr<Projetil> retorno( new Projetil( rhs ) );
     return std::move( retorno );
 }
+
+void Projetil::Colide( Personagem& alvo )
+{
+    
+}

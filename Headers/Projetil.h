@@ -1,6 +1,7 @@
 #ifndef PROJETIL_CLASS
 #define PROJETIL_CLASS
 #include "Vec2.h"
+#include "Personagem.h"
 #include "Anime.h"
 #include <memory>
 
@@ -12,6 +13,7 @@ public:
     Projetil( const Projetil& rhs );
     virtual void Atualizar( const float frameTime );
     virtual void Desenhar() const;
+    virtual void Colide( Personagem& alvo );
     std::unique_ptr<Projetil> operator= ( const Projetil& rhs );
 private:
     Anime animation;
