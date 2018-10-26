@@ -3,7 +3,7 @@
 Personagem::Personagem( const Imagem& sprite, Vec2<float> pos )
     :
     sprite(sprite),
-    pos(pos)
+    GameObject(pos)
 {
     for( int i = 0; i < (int)Sequencia::ParadoBaixo; i++ )
     {

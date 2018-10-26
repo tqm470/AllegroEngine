@@ -31,9 +31,10 @@ Jogo::Jogo(Janela& janela)
     lastFrameTime = al_get_time();
 
     Jogador* main( new Jogador( *sprite1, {400, 300}, *mouse, *teclado, *cena ) );
+    Personagem* char1 = new Personagem( *sprite2, {200.0f, 50.0f} );
 
     cena->CriarObjeto( main );
-    
+    cena->CriarObjeto( char1 );
 }
 
 void Jogo::Atualizar()

@@ -30,7 +30,6 @@ private:
     };
 protected:
     const Imagem& sprite;
-    Vec2<float> pos;
     Vec2<float> dir;
     float velocidade = 1.0f;
     std::vector<Anime> animations;

@@ -4,7 +4,7 @@
 Projetil::Projetil( const Imagem& sprite, int n, const Vec2<float>& pos, const Vec2<float>& dir,
                     const float velocidade, const float alcance )
     :
-    pos(pos),
+    GameObject(pos),
     pos0(pos),
     dir(dir),
     velocidade(velocidade),

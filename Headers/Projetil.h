@@ -18,7 +18,6 @@ public:
     //Projetil& operator= ( const Projetil& rhs );
 private:
     Anime* animation;
-    Vec2<float> pos;
     double angulo;
     const Vec2<float> pos0;
     const Vec2<float> dir;

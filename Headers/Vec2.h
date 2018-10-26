@@ -67,6 +67,10 @@ public:
     {
         return {this->x - rhs.x, this->y - rhs.y};
     }
+    operator Vec2<int>()
+    {
+        return Vec2<int>((int)this->x, (int)this->y);
+    }
 
     T x;
     T y;

@@ -1,5 +1,4 @@
 #include "../Headers/Jogador.h"
-#include "../Headers/Jogo.h"
 
 Jogador::Jogador(const Imagem& sprite, const Vec2<float>& pos, const Mouse& mouse, const Teclado& teclado, Cena& cena )
     :
@@ -8,7 +7,8 @@ Jogador::Jogador(const Imagem& sprite, const Vec2<float>& pos, const Mouse& mous
     mouse( mouse ),
     teclado( teclado )
 {
-
+    spellSprite = new Sprite( "Recursos/!Other2.png", 576 / 4, 768 / 2, 3 );
+    font = new Fonte("Recursos/font/Quicksand.otf", 16);
 }
 
 void Jogador::Atualizar( float dt )
@@ -23,6 +23,12 @@ void Jogador::Atualizar( float dt )
             castCD = 0.0f;
         }
     }
+}
+
+void Jogador::Desenhar() const
+{
+    animations[(int)sequenciaAtual].Desenhar( pos );
+    font->Escrever("Player 1", pos + Vec2<float>( -10, -20 ), al_map_rgb(50, 255, 255) );
 }
 
 void Jogador::LerControles()
@@ -49,7 +55,7 @@ void Jogador::LerControles()
     if(castCD == 0)
         if( mouse.Botao( 2 ) || teclado.Tecla( ALLEGRO_KEY_A) )
         {
-            Cast( sprite, (mouse.GetPosition() - pos).Normalizado(), 1.5f, 400 );
+            Cast( *spellSprite, (mouse.GetPosition() - pos).Normalizado(), 1.5f, 400 );
             castCD += 0.1f;
         }
 

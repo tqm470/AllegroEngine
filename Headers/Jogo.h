@@ -25,8 +25,8 @@ private:
     Janela& janela;
     Imagem* sprite1;
     Imagem* sprite2;
-    Imagem* fogo;
 public:
+    Imagem* fogo;
     Anime* foguinho;
 private:
     Fonte* fonte;
