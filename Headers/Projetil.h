@@ -1,30 +1,29 @@
 #ifndef PROJETIL_CLASS
 #define PROJETIL_CLASS
+#include "GameObject.h"
 #include "Vec2.h"
 #include "Personagem.h"
 #include "Anime.h"
 #include <memory>
 
-class Projetil
+class Projetil : public GameObject
 {
 public:
-    Projetil( const Anime& animation, const Vec2<float>& pos, const Vec2<float>& dir, const float speed, float alcance );
-    Projetil( const Projetil&& rhs );
-    Projetil( const Projetil& rhs );
-    virtual void Atualizar( const float frameTime );
-    virtual void Desenhar() const;
+    Projetil( const Imagem& sprite, int n,const Vec2<float>& pos, const Vec2<float>& dir, const float speed, float alcance );
+    //Projetil( const Projetil&& rhs );
+    //Projetil( const Projetil& rhs );
+    void Atualizar( const float frameTime ) override;
+    void Desenhar() const override;
     virtual void Colide( Personagem& alvo );
-    std::unique_ptr<Projetil> operator= ( const Projetil& rhs );
+    //Projetil& operator= ( const Projetil& rhs );
 private:
-    Anime animation;
+    Anime* animation;
     Vec2<float> pos;
     double angulo;
     const Vec2<float> pos0;
     const Vec2<float> dir;
     const float alcance;
     const float velocidade;
-public:
-    bool deveDeletar = false;
 };
 
 #endif

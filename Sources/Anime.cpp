@@ -74,8 +74,3 @@ void Anime::Advance()
         iCurFrame = 0;
     }
 }
-
-Anime& Anime::operator= ( const Anime& )
-{
-    
-}

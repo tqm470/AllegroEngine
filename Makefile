@@ -1,5 +1,5 @@
-Jeremias: Sources/Main.cpp Allegro.o Janela.o Imagem.o Fonte.o Jogo.o Mouse.o Personagem.o Jogador.o Anime.o Teclado.o Projetil.o
-	g++ -std=c++11 -o Jeremias Sources/Main.cpp Allegro.o Janela.o Imagem.o Fonte.o Mouse.o Jogo.o Teclado.o Personagem.o Jogador.o Anime.o Projetil.o -lallegro -lallegro_image -lallegro_font -lallegro_ttf
+Jeremias: Sources/Main.cpp Allegro.o Janela.o Imagem.o Fonte.o Jogo.o Mouse.o Personagem.o Jogador.o Anime.o Teclado.o Projetil.o Cena.o
+	g++ -std=c++11 -o Jeremias Sources/Main.cpp Allegro.o Janela.o Imagem.o Fonte.o Mouse.o Jogo.o Teclado.o Personagem.o Jogador.o Anime.o Projetil.o Cena.o -lallegro -lallegro_image -lallegro_font -lallegro_ttf
 Allegro.o: Sources/Allegro.cpp Headers/Allegro.h
 	g++ -std=c++11 -c Sources/Allegro.cpp
 Janela.o: Sources/Janela.cpp Headers/Janela.h
@@ -22,3 +22,5 @@ Teclado.o: Sources/Teclado.cpp Headers/Teclado.h
 	g++ -std=c++11 -c Sources/Teclado.cpp
 Projetil.o: Sources/Projetil.cpp Headers/Projetil.h
 	g++ -std=c++11 -c Sources/Projetil.cpp
+Cena.o: Sources/Cena.cpp Headers/Cena.h
+	g++ -std=c++11 -c Sources/Cena.cpp

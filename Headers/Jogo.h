@@ -7,6 +7,7 @@
 #include "Personagem.h"
 #include "Teclado.h"
 #include "Projetil.h"
+#include "Cena.h"
 #include <memory>
 
 class Jogo
@@ -16,7 +17,6 @@ public:
     ~Jogo();
     void Atualizar();
     void Desenhar();
-    void CriarProjetil( std::unique_ptr<Projetil>&& projetil );
 private:
     float lastFrameTime = 0.0f;
     float frameTime = 0.0f;
@@ -29,14 +29,10 @@ private:
 public:
     Anime* foguinho;
 private:
-    Personagem* main;
-    Personagem* secundario;
     Fonte* fonte;
     Mouse* mouse;
     Teclado* teclado;
-    Vec2<int> imgPos;
-
-    std::vector<std::unique_ptr<Projetil>> projeteis;
+    Cena* cena;
 };
 
 #endif

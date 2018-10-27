@@ -1,14 +1,14 @@
 #include "../Headers/Jogo.h"
 #include "../Headers/Sprite.h"
 #include "../Headers/Jogador.h"
+#include <algorithm>
 #include <sstream>
 #include <cmath>
 
 
 Jogo::Jogo(Janela& janela)
     :
-    janela(janela),
-    imgPos(100, 100)
+    janela(janela)
 {
     try
     {
@@ -19,6 +19,8 @@ Jogo::Jogo(Janela& janela)
         fonte = new Fonte( "Recursos/font/Quicksand.otf", 24 );
         mouse = new Mouse();
         teclado = new Teclado();
+
+        cena = new Cena();
     }
     catch( Bug e )
     {
@@ -26,12 +28,12 @@ Jogo::Jogo(Janela& janela)
         e.Print();
         exit(1);
     }
-    main = new Jogador( *sprite1, {200, 200}, *mouse, *teclado, *this );
-    secundario = new Personagem( *sprite2, {400, 200} );
     lastFrameTime = al_get_time();
 
-    foguinho = new Anime( 0, fogo->GetAltura() / 2, fogo->GetLargura() /3, fogo->GetAltura() / 4,
-                             3, *fogo, 0.16f );
+    Jogador* main( new Jogador( *sprite1, {400, 300}, *mouse, *teclado, *cena ) );
+
+    cena->CriarObjeto( main );
+    
 }
 
 void Jogo::Atualizar()
@@ -49,49 +51,14 @@ void Jogo::Atualizar()
         timer = 0.0f;
     }
 
-    foguinho->Atualizar( frameTime );
-
-    main->Atualizar( frameTime );
-
-    if( mouse->Botao( 1 ))
-    {
-        Vec2<float> mousePos = mouse->GetPosition();
-        secundario->SetDirection( Vec2<float>( mousePos - secundario->GetPos() ).Normalizado() );
-    }
-    else
-    {
-        secundario->SetDirection( {0.0f, 0.0f} );
-    }
-    secundario->Atualizar( frameTime );
+    cena->Atualizar( frameTime );
     
-
-    for( auto i = projeteis.begin(); i < projeteis.end(); i++ )
-    {
-        i->get()->Atualizar( frameTime );
-        if(i->get()->deveDeletar)
-        {
-            std::cout << "deletou" << std::endl;
-            i = projeteis.erase( i );
-        }
-    }
 }
 
 void Jogo::Desenhar()
 {
-    
-    
-    secundario->Desenhar();
-    main->Desenhar();
-    
     Vec2<float> mDir = ( mouse->GetPosition() - Vec2<float>(400.0f, 300.0f) ).Normalizado();
-
-    //fogo->DrawRotated( {400, 300}, mDir );
-    //foguinho->DesenharRotacionado( {400, 300}, mDir );
-
-    for( auto i = projeteis.begin(); i < projeteis.end(); i++ )
-    {
-        i->get()->Desenhar();
-    }
+    cena->Desenhar();
 }
 
 Jogo::~Jogo()
@@ -101,11 +68,6 @@ Jogo::~Jogo()
     delete fonte;
     delete mouse;
     delete teclado;
-    delete main;
     delete fogo;
-}
-
-void Jogo::CriarProjetil( std::unique_ptr<Projetil>&& projetil )
-{
-    projeteis.push_back( std::move( projetil ) );
+    delete cena;
 }
