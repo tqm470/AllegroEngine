@@ -13,8 +13,9 @@ public:
     void Atualizar( const float frameTime ) override;
     void SetDirection( const Vec2<float>& dir);
     void Desenhar() const override;
-    Vec2<float> GetPos() const;
-private:
+    Vec2<float> GetPos() const override;
+    bool operator< ( const GameObject& lhs ) const;
+    bool operator> ( const GameObject& lhs ) const;
     enum class Sequencia
     {
         

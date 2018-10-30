@@ -32,6 +32,12 @@ void Projetil::Desenhar() const
         animation->DesenharRotacionado( pos, angulo );
 }
 
+Vec2<float> Projetil::GetPos() const
+{
+    return pos;
+}
+
+
 /*Projetil::Projetil( const Projetil&& rhs )
     :
     animation(rhs.animation),

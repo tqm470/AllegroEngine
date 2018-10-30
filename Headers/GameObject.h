@@ -13,16 +13,20 @@ public:
     }
     virtual void Atualizar( const float frametime ) = 0;
     virtual void Desenhar() const = 0;
+    virtual Vec2<float> GetPos() const = 0;
+
     bool operator< ( const GameObject& lhs ) const
     {
-        return this->pos.y < lhs.pos.y;
+        return this->GetPos().y < lhs.GetPos().y;
     }
+
     bool operator> ( const GameObject& lhs ) const
     {
-        return this->pos.y > lhs.pos.y;
-    }        
-public:
-    bool deveDeletar = false;
+        return this->GetPos().y > lhs.GetPos().y;
+    }
+
+    bool deveDeletar = false;     
+protected:
     Vec2<float> pos;
 };
 

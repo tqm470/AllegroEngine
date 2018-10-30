@@ -69,9 +69,10 @@ void Personagem::SetDirection( const Vec2<float>& direction )
 
 Vec2<float> Personagem::GetPos() const
 {
-    return pos;
+    return pos + Vec2<float>( sprite.GetLargura() / 2, sprite.GetAltura() );
 }
 
 Personagem::~Personagem()
 {
+
 }

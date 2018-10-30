@@ -14,6 +14,7 @@ public:
     //Projetil( const Projetil& rhs );
     void Atualizar( const float frameTime ) override;
     void Desenhar() const override;
+    Vec2<float> GetPos() const override;
     virtual void Colide( Personagem& alvo );
     //Projetil& operator= ( const Projetil& rhs );
 private:
